@@ -1,0 +1,41 @@
+Obiettivo: trovare la sequenza di blackout tale per cui massimizzo il numero di persone colpite 
+rispettando il vincolo di ore di durata e anni di copertura dell'assicurazione
+
+Input: 
+	- list <?> contenenti tutti i blackout avvenuti nel NERC selezionato da input 
+	- ore disponibili
+	- anni disponibili
+	
+Output: 
+	- List<Blackout> soluzione : lista di blackout che massimizza il numero di persone coinvolte
+
+
+1) Cosa rappresenta il "livello" nel mio algoritmo ricorsivo?
+	il numero di blackout che costituiscono il parziale
+
+2) Com'è fatta una soluzione parziale?
+	List <Blackout> di lunghezza "livello"
+
+3) Come faccio a riconoscere se una soluzione parziale è anche completa?
+	- oreTotali == 200
+	- non riesco più ad aggiungere blackout perchè non c'è spazio	
+
+4) Data una soluzione parziale, come faccio a sapere se è valida o se non è valida?
+	Se rispetta i vincoli posti:
+	- oreTotali < 200
+	- differenza tra dataMax e dataMin è minore di Y
+	
+
+5) Data una soluzione completa, come faccio a sapere se è valida o se non è valida?
+	numeroClienti(parziale) > numeroClienti(soluzione)
+
+6) Qual è la regola per generare tutte le soluzioni del livello+1 a partire da una soluzione parziale del
+livello corrente?
+	Provare a inserire qualsiasi blackout
+
+7) Qual è la struttura dati per memorizzare una soluzione (parziale o completa)?
+	List<Blackout> 
+
+8) Qual è la struttura dati per memorizzare lo stato della ricerca (della ricorsione)?
+	List<Blackout> 
+
